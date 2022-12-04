@@ -39,6 +39,9 @@ public class ReplicationManagersPNCTests : IDisposable
 
             this.rm0.RegisterType<PNCounter>();
             this.rm1.RegisterType<PNCounter>();
+
+            this.rm0.RegisterType<GVector<string>>();
+            this.rm1.RegisterType<GVector<string>>();
     }
 
 
@@ -47,7 +50,21 @@ public class ReplicationManagersPNCTests : IDisposable
     }
 
 
+    [Fact]
+    public void RepManagerPNCTest()
+    {
+        Guid uid = this.rm0.CreateCRDTInstance<PNCounter>(out PNCounter pnc1);
 
+        pnc1.Increment(5);
+        pnc1.Decrement(8);
+        pnc1.Increment(10);
+        pnc1.Decrement(3);
+
+        var pnc1r = this.rm1.GetCRDT<PNCounter>(uid);   
+
+        Assert.Equal(pnc1.Get(), pnc1r.Get());
+
+    }
 
 
     [Fact]

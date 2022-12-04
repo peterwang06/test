@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Examples",
+    "\\Examples\\Chatroom",
+    "\\MergeSharp",
+    "\\MergeSharp.TCPConnectionManager",
+    "\\MergeSharp.Tests"
   ],
-  "SelectedNode": "\\C:\\Users\\Peter\\Source\\Repos\\MergeSharp_peter",
-  "PreviewInSolutionExplorer": false
+  "SelectedNode": "\\Examples\\Chatroom\\chatroom.csproj",
+  "PreviewInSolutionExplorer": true
 }

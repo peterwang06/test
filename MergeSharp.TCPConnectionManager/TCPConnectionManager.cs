@@ -90,14 +90,19 @@ public class ConnectionManager : IConnectionManager
                 continue;
             }
 
+            //Console.WriteLine("Connecting to " + node.ip + ":" + node.port);
             if (!node.connected)
             {
-                if(!node.Connect())
+                while (!node.connected)
                 {
-                    throw new Exception("Failed to connect to node " + node.ip + ":" + node.port);
+                    node.Connect();
                 }
+                //if(!node.Connect())
+                //{
+                //    throw new Exception("Failed to connect to node " + node.ip + ":" + node.port);
+                //}
             }
-
+            //Console.WriteLine("Connected!");
             node.Send(msg);
         }
     }

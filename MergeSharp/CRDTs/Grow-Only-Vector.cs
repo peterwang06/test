@@ -84,6 +84,14 @@ public class GVector<T> : CRDT, ICollection<T>
         this.replicaInfo[this.replicaIdx] = new GVectorData<T>();
     }
 
+    public GVector(Guid id)
+    {
+        this.replicaIdx = id;
+        this.replicaInfo = new Dictionary<Guid, GVectorData<T>>();
+        this.local = new GVectorData<T>();
+        this.replicaInfo[this.replicaIdx] = new GVectorData<T>();
+    }
+
     [OperationType(OpType.Update)]
     public virtual void Add(T item)
     {
